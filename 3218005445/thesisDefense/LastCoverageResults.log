@@ -1,0 +1,22 @@
+[2020-09-20 14:48:46] [info] Start Program:
+Path:"C:\\Users\\GUANG\\Desktop\\SE_individual_work\\SE_individual_work\\Sanakkk3\\thesisDefense\\Debug\\thesisDefense.exe"
+Arguments:
+Working directory: "C:\\Users\\GUANG\\Desktop\\SE_individual_work\\SE_individual_work\\Sanakkk3\\thesisDefense\\"
+Modules: Selected: C:\Users\GUANG\Desktop\SE_individual_work\SE_individual_work\Sanakkk3\thesisDefense\Debug\thesisDefense.exe C:\Users\GUANG\Desktop\SE_individual_work\SE_individual_work\Sanakkk3\thesisDefense\Debug\thesisDefenseUnitTest.dll Excluded: 
+Sources: Selected: C:\Users\GUANG\Desktop\SE_individual_work\SE_individual_work\Sanakkk3\thesisDefense C:\Users\GUANG\Desktop\SE_individual_work\SE_individual_work\Sanakkk3\thesisDefenseUnitTest Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: binary C:\Users\GUANG\AppData\Local\Temp\034v43e2.skj 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2020-09-20 14:48:48] [info] Module: C:\Users\GUANG\Desktop\SE_individual_work\SE_individual_work\Sanakkk3\thesisDefense\Debug\thesisDefense.exe is selected because it matches selected pattern: 
+[2020-09-20 16:02:21] [info] ----------------------------------------------------
+[2020-09-20 16:02:21] [info] Coverage binary generated in file: C:\Users\GUANG\AppData\Local\Temp\034v43e2.skj
+[2020-09-20 16:02:21] [info] ----------------------------------------------------
+[2020-09-20 16:02:21] [error] Your program stop with error code: 1
