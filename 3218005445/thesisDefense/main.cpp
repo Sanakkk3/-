@@ -4,6 +4,7 @@
 #include<string>
 #include<numeric>
 #include<Windows.h>
+#include<iomanip>
 
 using namespace std;
 //string UTF8ToGB(const char* str) //编码转换utf-8 --> gbk,解决编码不符出现的中文乱码问题。
@@ -51,11 +52,12 @@ int main() {
 	//
 	int len1;
 	int len2;
-	float sum;
+	float sum=0;
+	int count = 0;
 	//最小编辑距离
-	int ed;
+	float ed;
 
-	
+	float getEd(string str1, string str2, int len1, int len2);
 
 
 	//打开文件
@@ -63,26 +65,65 @@ int main() {
 	copFile.open(fileName[1],ios::in);
 	ansFile.open(fileName[2], ios::out);
 
+
 	//遍历原始文件和抄袭文件
-	while (getline(oriFile, str1) || getline(copFile, str2)) {
+	if (oriFile.is_open() && copFile.is_open()) {
+		while (!oriFile.eof()||!copFile.eof()) {
+			getline(oriFile, str1);
+			getline(copFile, str2);
+			if (!str1.empty() || !str2.empty())
+				count++;
+			if (str1.empty() && str2.empty()) continue;  //  若都为空行，则跳过。
 
-		len1 = str1.size();
-		len2 = str2.size();
-		ed = getEd(str1, str2,len1,len2);
-		ans = 1.0 - 1.0 * ed / max(len1, len2);
-		ansArray.push_back(ans);
+			len1 = str1.size();
+			len2 = str2.size();
+			ed = getEd(str1, str2, len1, len2);
+			//
+			cout << ed << endl;
+
+			ans = 1.0 - 1.0 * ed / max(len1, len2);
+			//
+			cout << ans << endl;
+
+			ansArray.push_back(ans);
+
+			//
+			cout << endl;
+		}
 	}
-	sum = accumulate(ansArray.begin(), ansArray.end(), 0);
+	//
+	cout << endl;
+	//
+	cout << count << endl;
+
+	vector<float>::iterator iter;
+	for (iter = ansArray.begin(); iter != ansArray.end(); iter++) {
+		sum += *iter;
+	}
+	//
+	cout << sum << endl;
+
+	sum /= count; //查重率
+
+	//
+	cout << sum << endl;
 	
+	
+	//写文件
+	if (ansFile.is_open()) {
+		ansFile <<setprecision(4)<< sum*100<<"%";
+		cout << "输出成功！" << endl;
+	}
 
-
-
+	oriFile.close();
+	copFile.close();
+	ansFile.close();
 
 	system("pause");
 	return 0;
 }
 
-int getEd(string str1, string str2,int len1,int len2) {  //计算最小编辑距离
+float getEd(string str1, string str2,int len1,int len2) {  //计算最小编辑距离
 	//
 	int temp;
 
@@ -107,4 +148,7 @@ int getEd(string str1, string str2,int len1,int len2) {  //计算最小编辑距离
 			}
 		}
 	}
+
+	return dp[len1][len2];
+
 }
